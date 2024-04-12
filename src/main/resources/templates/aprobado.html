@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <nav th:replace="layout::menu"></nav>
+    <div class="card">
+        <div class="card-header text-bg-danger">
+            Calculadora Alumno Aprobado
+        </div>
+        <div class="card-body">
+            <form th:action="@{/aprobado}" method="post" th:object="${aprobadoModel}">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtnota1"
+                           placeholder="name@example.com" th:field="*{nota1}">
+                    <label for="txtnota1">Ingrese la nota 1</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtnota2"
+                           placeholder="Password" th:field="*{nota2}">
+                    <label for="txtnota2">Ingrese la nota 2</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="txtnota3"
+                           placeholder="Password" th:field="*{nota3}">
+                    <label for="txtnota3">Ingrese la nota 3</label>
+                </div>
+                <hr/>
+                <button type="submit" class="btn btn-primary">Calcular</button>
+                <br/>
+                <br/>
+                <div th:if="${mostrarMensaje}" class="alert alert-danger" role="alert">
+                    <span th:text="${resultado} ?: ''"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

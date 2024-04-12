@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <nav th:replace="layout::menu"></nav>
+    <div class="card">
+        <div class="card-header text-bg-danger">
+            Calculadora Total a Pagar
+        </div>
+        <div class="card-body">
+            <form th:action="@{/almacen}" method="post" th:object="${almacenModel}">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="txtcantidad"
+                           placeholder="name@example.com" th:field="*{cantidad}">
+                    <label for="txtcantidad">Cantidad de productos</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="txtprecio"
+                           placeholder="Password" th:field="*{precio}">
+                    <label for="txtprecio">Precio unitario</label>
+                </div>
+                <hr/>
+                <button type="submit" class="btn btn-primary">Calcular</button>
+                <br/>
+                <br/>
+                <div th:if="${mostrarMensaje}" class="alert alert-danger" role="alert">
+                    <span th:text="${resultado} ?: ''"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
