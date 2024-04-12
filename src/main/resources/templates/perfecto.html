@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="layout::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="layout::menu"></nav>
+<div class="card">
+    <div class="card-header text-bg-danger">
+        Calculadora Numeros Perfectos
+    </div>
+    <div class="card-body">
+        <form th:action="@{/perfecto}" method="post" th:object="${perfectoModel}">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="txtlimite"
+                       placeholder="name@example.com" th:field="*{limite}">
+                <label for="txtlimite">Ingresar limite de numeros</label>
+            </div>
+            <hr/>
+            <button type="submit" class="btn btn-primary">Calcular</button>
+            <br/>
+            <br/>
+            <div th:if="${mostrarMensaje}" class="alert alert-danger" role="alert">
+                <span th:text="${resultado} ?: ''"></span>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
